@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valentine ❤️</title>
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(45deg,#ff4e8d,#ff9a9e);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    color:white;
+    text-align:center;
+    overflow:hidden;
+}
+
+.box{
+    background: rgba(0,0,0,0.3);
+    padding:30px;
+    border-radius:20px;
+    backdrop-filter: blur(10px);
+}
+
+input{
+    padding:10px;
+    border:none;
+    border-radius:20px;
+    outline:none;
+    text-align:center;
+}
+
+button{
+    padding:10px 20px;
+    border:none;
+    border-radius:20px;
+    margin-top:10px;
+    cursor:pointer;
+}
+
+#main{
+    display:none;
+}
+
+h1{
+    margin-bottom:10px;
+}
+
+#love{
+    font-size:28px;
+    margin-top:15px;
+    animation: floatText 2s ease-in-out infinite alternate;
+}
+
+@keyframes floatText{
+    from{transform: translateY(0px);}
+    to{transform: translateY(-8px);}
+}
+
+iframe{
+    margin-top:15px;
+    border-radius:15px;
+}
+</style>
+</head>
+<body>
+
+<div class="box" id="login">
+    <h2>اكتبي تاريخ ميلادك 🎂</h2>
+    <input type="password" id="pass" placeholder="مثال: 27/9">
+    <br>
+    <button onclick="checkPass()">دخول ❤️</button>
+</div>
+
+<div class="box" id="main">
+    <h1>Happy Valentine 💖</h1>
+    <p>من يوم ما بدأنا كلام، وانتي بقيتي أجمل صدفة في حياتي ✨</p>
+    <p id="counter"></p>
+    <div id="love">بعشقك ❤️</div>
+
+    <iframe width="250" height="400"
+    src="https://www.youtube.com/embed/8vKuZaL3nsM"
+    frameborder="0"
+    allowfullscreen></iframe>
+</div>
+
+<script>
+function checkPass(){
+    let password = document.getElementById("pass").value;
+    if(password === "27/9"){
+        document.getElementById("login").style.display="none";
+        document.getElementById("main").style.display="block";
+    }else{
+        alert("غلط 😏");
+    }
+}
+
+// عداد من 5/11/2025
+const startDate = new Date("2025-11-05T00:00:00");
+
+function updateCounter(){
+    const now = new Date();
+    const diff = now - startDate;
+
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff / (1000*60*60)) % 24);
+    const minutes = Math.floor((diff / (1000*60)) % 60);
+
+    document.getElementById("counter").innerHTML =
+    "بقالنا مع بعض: " + days + " يوم و " + hours + " ساعة و " + minutes + " دقيقة ❤️";
+}
+
+setInterval(updateCounter,1000);
+updateCounter();
+</script>
+
+</body>
+  </html>
